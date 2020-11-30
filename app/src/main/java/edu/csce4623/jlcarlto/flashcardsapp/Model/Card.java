@@ -8,7 +8,7 @@ import androidx.room.*;
  * cards.
  * TODO: Implement deck building, implement user sign in (user ID foreign key field?)
  */
-@Entity(tableName = "card_table")
+@Entity(tableName = "Card")
 public class Card {
 
     //constant column name values so other classes can use column names without errors

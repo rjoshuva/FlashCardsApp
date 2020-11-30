@@ -30,10 +30,10 @@ public interface CardDao {
 
     /**
      * Delete a card in the table
-     * @param card
+     * @param id
      */
-    @Delete
-    void delete(Card card);
+    @Query("DELETE FROM Card WHERE card_id = :id")
+    void delete(long id);
 
     /**
      * Get all cards from the table
@@ -41,12 +41,12 @@ public interface CardDao {
      * @return List of all cards in the database
      * TODO: Might want this to return a cursor object
      */
-    @Query("SELECT * FROM card_table")
+    @Query("SELECT * FROM Card")
     LiveData<List<Card>> getAllCards();
 
     /**
-     *
+     * Get individual card from the database
      */
-    @Query("SELECT * FROM card_table WHERE card_id = :id")
+    @Query("SELECT * FROM Card WHERE card_id = :id")
     Card getCard(long id);
 }
