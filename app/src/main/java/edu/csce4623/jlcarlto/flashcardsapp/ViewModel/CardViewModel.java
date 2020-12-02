@@ -53,7 +53,7 @@ public class CardViewModel extends AndroidViewModel {
      * @param card - the card to insert into the database
      * @returns - nothing
      */
-    public void insert(final Card card) {
+    public void insertCard(final Card card) {
         mCardRepository.insertCard(card);
     }
 
@@ -62,7 +62,7 @@ public class CardViewModel extends AndroidViewModel {
      * @param - card - the card to be deleted
      * @returns - nothing
      */
-    public void delete(final Card card) {
+    public void deleteCard(final Card card) {
         mCardRepository.deleteCard(card);
     }
 
@@ -71,8 +71,26 @@ public class CardViewModel extends AndroidViewModel {
      * @param - card - the card to be updated
      * @returns - nothing
      */
-    public void update(final Card card) {
+    public void updateCard(final Card card) {
         mCardRepository.updateCard(card);
+    }
+
+    /**
+     * Call the repository method for inserting decks
+     * @param deck - the deck to insert into the database
+     * @returns - nothing
+     */
+    public void insertDeck(final Deck deck) {
+        mCardRepository.insertDeck(deck);
+    }
+
+    /**
+     * Call the repository method for deleting cards
+     * @param deck - the deck to delete from the database
+     * @returns - nothing
+     */
+    public void deleteDeck(final Deck deck) {
+        mCardRepository.deleteDeck(deck);
     }
 
     @Override

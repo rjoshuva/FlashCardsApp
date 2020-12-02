@@ -58,6 +58,13 @@ public interface CardDao {
     void insertDeck(Deck deck);
 
     /**
+     * Delete a Deck from the table
+     * @param id
+     */
+    @Query("DELETE FROM Deck WHERE deck_id = :id")
+    void deleteDeck(long id);
+
+    /**
      * Get all decks in the Deck table
      * @return List of all decks
      */

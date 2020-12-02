@@ -79,4 +79,31 @@ public class CardRepository {
             }
     });
     }
+
+    /**
+     * Insert a Deck into the database
+     * @param - deck - the deck to be inserted
+     * @returns - nothing
+     */
+    public void insertDeck(final Deck deck) {
+        CardDatabase.databaseWriteExecutor.execute( new Runnable() {
+            @Override
+            public void run() {
+                mCardDao.insertDeck(deck);
+            }
+        });
+    }
+    /**
+     * Delete a card from the database based on it's ID
+     * @param - card - the card to be deleted
+     * @returns - nothing
+     */
+    public void deleteDeck(final Deck deck) {
+        CardDatabase.databaseWriteExecutor.execute( new Runnable() {
+            @Override
+            public void run() {
+                mCardDao.deleteCard(deck.getDeckId());
+            }
+        });
+    }
 }
