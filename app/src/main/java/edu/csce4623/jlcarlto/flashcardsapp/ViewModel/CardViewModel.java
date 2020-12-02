@@ -11,6 +11,7 @@ import java.util.List;
 
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.CardRepository;
+import edu.csce4623.jlcarlto.flashcardsapp.Model.Deck;
 
 /**
  * This ViewModel has access to the Repository methods over the Card table. Plug View components
@@ -21,6 +22,7 @@ public class CardViewModel extends AndroidViewModel {
     // ViewModel object will have an instance of the repository and a list of all cards in the database
     private CardRepository mCardRepository;
     private final LiveData<List<Card>> mCards;
+    private final LiveData<List<Deck>> mDecks;
 
     /**
      * Constructor for CardViewModel objects
@@ -30,6 +32,7 @@ public class CardViewModel extends AndroidViewModel {
         super(application);
         mCardRepository = new CardRepository(application);
         mCards = mCardRepository.getAllCards();
+        mDecks = mCardRepository.getAllDecks();
     }
 
     /**
@@ -40,12 +43,18 @@ public class CardViewModel extends AndroidViewModel {
     }
 
     /**
+     * Get all decks in the database
+     * @return LiveData list of all decks in the database
+     */
+    public LiveData<List<Deck>> getAllDecks() { return mDecks; }
+
+    /**
      * Call the repository method for inserting cards
      * @param card - the card to insert into the database
      * @returns - nothing
      */
     public void insert(final Card card) {
-        mCardRepository.insert(card);
+        mCardRepository.insertCard(card);
     }
 
     /**
@@ -54,7 +63,7 @@ public class CardViewModel extends AndroidViewModel {
      * @returns - nothing
      */
     public void delete(final Card card) {
-        mCardRepository.delete(card);
+        mCardRepository.deleteCard(card);
     }
 
     /**
@@ -63,7 +72,7 @@ public class CardViewModel extends AndroidViewModel {
      * @returns - nothing
      */
     public void update(final Card card) {
-        mCardRepository.update(card);
+        mCardRepository.updateCard(card);
     }
 
     @Override

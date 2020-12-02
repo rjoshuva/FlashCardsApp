@@ -20,7 +20,7 @@ import edu.csce4623.jlcarlto.flashcardsapp.Constants;
  * NOTE: Can implement callback functions for instance to call on database create
  * on device
  */
-@Database(entities = {Card.class}, version = 1, exportSchema = false)
+@Database(entities = {Card.class, Deck.class}, version = 1, exportSchema = false)
 public abstract class CardDatabase extends RoomDatabase {
 
     // Instance singleton - only want one instance of the database everywhere in app
