@@ -73,7 +73,7 @@ public class CardRepository {
         CardDatabase.databaseWriteExecutor.execute( new Runnable() {
             @Override
             public void run() {
-                mCardDao.deleteCard(card.getId());
+                mCardDao.deleteCard(card.getCardId());
             }
         });
     }

@@ -46,8 +46,20 @@ public class Card {
         this.cardBack = cardBack;
     }
 
-    public long getId() {
+    public long getCardId() {
         return cardId;
+    }
+
+    public long getDeckId() {
+        return deckId;
+    }
+
+    public void setCardId(long cardId) {
+        this.cardId = cardId;
+    }
+
+    public void setDeckId(long deckId) {
+        this.deckId = deckId;
     }
 
     public String getCardFront() {
