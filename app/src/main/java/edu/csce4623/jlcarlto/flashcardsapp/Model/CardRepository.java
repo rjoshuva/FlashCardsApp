@@ -16,6 +16,7 @@ public class CardRepository {
     private CardDao mCardDao;
     private LiveData<List<Card>> mCardsList;
     private LiveData<List<Deck>> mDecksList;
+    private LiveData<List<Card>> cardsInDeck;
 
     public CardRepository(Application application) {
         //Get instance of database and get access to DAO
@@ -37,6 +38,17 @@ public class CardRepository {
      * @return LiveData list of all cards in the database
      */
     public LiveData<List<Deck>> getAllDecks() { return mDecksList; }
+
+    /**
+     * Gets all cards in a deck by ID
+     * @param deckId
+     * @return
+     */
+    public LiveData<List<Card>> getCardsInDeckById(long deckId)
+    {
+        cardsInDeck = mCardDao.getCardsInDeckById(deckId);
+        return cardsInDeck;
+    }
 
     /**
      * Insert a Card object into the database

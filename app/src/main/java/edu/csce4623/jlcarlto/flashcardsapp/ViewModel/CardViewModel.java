@@ -23,6 +23,7 @@ public class CardViewModel extends AndroidViewModel {
     private CardRepository mCardRepository;
     private final LiveData<List<Card>> mCards;
     private final LiveData<List<Deck>> mDecks;
+    private LiveData<List<Card>> cardsInDeck;
 
     /**
      * Constructor for CardViewModel objects
@@ -47,6 +48,16 @@ public class CardViewModel extends AndroidViewModel {
      * @return LiveData list of all decks in the database
      */
     public LiveData<List<Deck>> getAllDecks() { return mDecks; }
+
+    /**
+     * Get a deck of cards by Deck Id
+     * @param deckId
+     * @return LiveData list of cards belonging to that Deck
+     */
+    public LiveData<List<Card>> getCardsInDeckById(long deckId) {
+        cardsInDeck = mCardRepository.getCardsInDeckById(deckId);
+        return cardsInDeck;
+    }
 
     /**
      * Call the repository method for inserting cards

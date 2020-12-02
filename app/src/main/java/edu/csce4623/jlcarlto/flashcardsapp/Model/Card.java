@@ -1,5 +1,6 @@
 package edu.csce4623.jlcarlto.flashcardsapp.Model;
 
+import androidx.annotation.NonNull;
 import androidx.room.*;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -36,6 +37,7 @@ public class Card {
     @ColumnInfo(name = CARD_BACK)
     private String cardBack;
 
+    @NonNull
     @ColumnInfo(name = CARD_DECK_ID)
     private long deckId;
 

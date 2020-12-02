@@ -86,6 +86,16 @@ public interface CardDao {
      * @return
      */
     @Transaction
-    @Query("SELECT * FROM Deck WHERE deck_title = :deckID")
+    @Query("SELECT * FROM Deck WHERE deck_id = :deckID")
     public LiveData<List<DeckWithCards>> getDeckWithCards(long deckID);
+
+    /**
+     * Get deck of cards by Deck ID
+     * @param deckID
+     * @return
+     */
+    @Transaction
+    @Query("SELECT * FROM Card WHERE card_deck_id = :deckID")
+    public LiveData<List<Card>> getCardsInDeckById(long deckID);
+
 }
