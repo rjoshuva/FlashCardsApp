@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,28 +32,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_activity);
-
         mViewModel = new CardViewModel(getApplication());
         cardList = mViewModel.getAllCards();
-
         cards = new ArrayList<>();
-        cardList.observe(this, new Observer<List<Card>>() {
-                    @Override
-                    public void onChanged(List<Card> c) {
-                        Log.d("onChanged", "cards cleared");
-                        cards.clear();
-                        cards.addAll(c);
-                    }
+        cardList.observe(this, new Observer <List<Card>>() {
+            @Override
+            public void onChanged(List<Card> c) {
+                cards.clear();
+                cards.addAll(c);
+                Log.d("onChanged cards=", cards.toString());
+            }
         });
         rv = (RecyclerView)findViewById(R.id.rv);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
 
-        Card card = new Card("Front text", "Back text");
+        Card card = new Card("Front", "Back");
         mViewModel.insert(card);
 
-        //Log.d("debug", Integer.toString(cards.size()));
+        Log.d("CARDS Size", Integer.toString(cards.size()));
         if(cards == null) {
             Log.d("debug", "cards is NULL");
         }

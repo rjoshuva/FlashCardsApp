@@ -23,14 +23,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
     List<Card> cardList;
     List<Card> cards;
 
-    RVAdapter(List<Card> cardList){
-        this.cardList = cardList;
+    RVAdapter(List<Card> c){
+        cardList = c;
     }
 
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_list_item, viewGroup, false);
         CardViewHolder cvh = new CardViewHolder(v);
         return cvh;
@@ -47,7 +46,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     @Override
     public int getItemCount() {
-            //Log.d("debug", String.valueOf(cardList.size()));
+            Log.d("getItemCount() size=", String.valueOf(cardList.size()));
             return cardList.size();
     }
 
