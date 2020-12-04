@@ -1,6 +1,7 @@
 package edu.csce4623.jlcarlto.flashcardsapp.Model;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -33,6 +34,7 @@ public class CardRepository {
      * @returns - nothing
      */
     public void insert(final Card card) {
+        Log.d("debug", "insert");
         CardDatabase.databaseWriteExecutor.execute( new Runnable() {
             @Override
             public void run() {

@@ -31,11 +31,15 @@ public class Card {
         this.cardBack = cardBack;
     }
 
-    public long getId() {
-        return cardId;
-    }
+    public long getId() { return cardId;}
+
+    public long getCardId() { return cardId;}
 
     public void setId(long id) {
+        this.cardId = id;
+    }
+
+    public void setCardId(long id) {
         this.cardId = id;
     }
 
