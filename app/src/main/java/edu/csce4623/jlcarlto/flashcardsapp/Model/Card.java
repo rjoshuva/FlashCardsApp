@@ -2,6 +2,8 @@ package edu.csce4623.jlcarlto.flashcardsapp.Model;
 
 import androidx.room.*;
 
+import java.io.Serializable;
+
 /**
  * Card class
  * This class represents a Java object that represents a table in the SQLite database for individual
@@ -9,7 +11,7 @@ import androidx.room.*;
  * TODO: Implement deck building, implement user sign in (user ID foreign key field?)
  */
 @Entity(tableName = "Card")
-public class Card {
+public class Card implements Serializable {
 
     //constant column name values so other classes can use column names without errors
     public static final String CARD_ID = "card_id";

@@ -20,25 +20,42 @@ import java.util.List;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
-    List<Card> cardList;
     List<Card> cards;
 
     RVAdapter(List<Card> c){
-        cardList = c;
+        cards = c;
     }
+
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            TextView front;
+            TextView back;
+            front = (TextView) view.findViewById(R.id.card_front);
+            back = (TextView) view.findViewById(R.id.card_back);
+
+            if (front.getVisibility() == View.VISIBLE) {
+                front.setVisibility(View.INVISIBLE);
+                back.setVisibility(View.VISIBLE);
+            } else {
+                back.setVisibility(View.INVISIBLE);
+                front.setVisibility(View.VISIBLE);
+            }
+        }
+    };
 
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_list_item, viewGroup, false);
         CardViewHolder cvh = new CardViewHolder(v);
+        cvh.cv.setOnClickListener(mOnClickListener);
         return cvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final CardViewHolder holder, final int i) {
-
-        Card card = cardList.get(i);
+        Card card = cards.get(i);
         Log.d("adapter", Integer.toString(i));
         holder.front.setText(card.getCardFront());
         holder.back.setText(card.getCardBack());
@@ -46,8 +63,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     @Override
     public int getItemCount() {
-            Log.d("getItemCount() size=", String.valueOf(cardList.size()));
-            return cardList.size();
+            Log.d("getItemCount() size=", String.valueOf(cards.size()));
+            return cards.size();
     }
 
     @Override
@@ -65,6 +82,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
             cv = (CardView) itemView.findViewById(R.id.cv);
             front = (TextView) itemView.findViewById(R.id.card_front);
             back = (TextView) itemView.findViewById(R.id.card_back);
+            back.setVisibility(View.INVISIBLE);
         }
     }
 
