@@ -21,7 +21,7 @@ public class Deck {
     public static final String DECK_TITLE = "deck_title";
     public static final String DECK_DESCRIPTION = "deck_description";
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = DECK_ID)
     private long deckId;
 
@@ -38,7 +38,8 @@ public class Deck {
      * @param deckTitle
      * @param deckDescription
      */
-    public Deck(String deckTitle, String deckDescription) {
+    public Deck(int deckId, String deckTitle, String deckDescription) {
+        this.deckId = deckId;
         this.deckTitle = deckTitle;
         this.deckDescription = deckDescription;
     }
