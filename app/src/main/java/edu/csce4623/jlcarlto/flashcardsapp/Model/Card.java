@@ -41,9 +41,10 @@ public class Card {
     @ColumnInfo(name = CARD_DECK_ID)
     private long deckId;
 
-    public Card(String cardFront, String cardBack) {
+    public Card(String cardFront, String cardBack, long deckId) {
         this.cardFront = cardFront;
         this.cardBack = cardBack;
+        this.deckId = deckId;
     }
 
     public long getCardId() {
