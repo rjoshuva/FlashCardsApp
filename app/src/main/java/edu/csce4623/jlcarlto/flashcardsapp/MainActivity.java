@@ -23,23 +23,35 @@ import java.util.List;
 import edu.csce4623.jlcarlto.flashcardsapp.AddEditCardActivity.AddEditCardActivity;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.CardRepository;
+import edu.csce4623.jlcarlto.flashcardsapp.Model.Deck;
+import edu.csce4623.jlcarlto.flashcardsapp.Model.DeckWithCards;
 import edu.csce4623.jlcarlto.flashcardsapp.ViewModel.CardViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     CardViewModel mViewModel;
     private LiveData<List<Card>> cardList;
+    private DeckWithCards deckList;
     private List<Card> cards;
+    private Deck deck;
     private RecyclerView rv;
     private Button btnNewCard;
     public RVAdapter adapter;
+    private long deckid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_activity);
         mViewModel = new CardViewModel(getApplication());
+        deck = new Deck("Title", "description");
+        mViewModel.insertDeck(deck);
+        deckid = deck.getDeckId();
+        Log.d("onCreate deckid=", String.valueOf(deckid));
+        Deck deck2 = new Deck("t2", "c2");
+        Log.d("onCreate deckid2=", String.valueOf(deck2.getDeckId()));
         cardList = mViewModel.getAllCards();
         cards = new ArrayList<>();
+
         cardList.observe(this, new Observer <List<Card>>() {
             @Override
             public void onChanged(List<Card> c) {
@@ -54,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
         btnNewCard = (Button)findViewById(R.id.btnNewCard);
         btnNewCard.setOnClickListener(btnOnClickListener);
-
-        Card card = new Card("Front", "Back");
-        mViewModel.insert(card);
 
         Log.d("CARDS Size", Integer.toString(cards.size()));
         if(cards == null) {
@@ -75,14 +84,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void addCardItem() {
         Intent intent = new Intent(this, AddEditCardActivity.class);
+        intent.putExtra("deckid", String.valueOf(deckid));
         startActivityForResult(intent, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mViewModel.insert((Card) data.getSerializableExtra("Card"));
-        adapter.notifyDataSetChanged();
+        if(data!=null) {
+            Card c = (Card) data.getSerializableExtra("Card");
+            c.setDeckId(deckid);
+            mViewModel.insertCard(c);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
