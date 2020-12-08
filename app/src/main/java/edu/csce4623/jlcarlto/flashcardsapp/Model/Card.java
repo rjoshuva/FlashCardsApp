@@ -3,6 +3,8 @@ package edu.csce4623.jlcarlto.flashcardsapp.Model;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 
+import java.io.Serializable;
+
 import static androidx.room.ForeignKey.CASCADE;
 import static edu.csce4623.jlcarlto.flashcardsapp.Model.Card.CARD_DECK_ID;
 import static edu.csce4623.jlcarlto.flashcardsapp.Model.Card.CARD_ID;
@@ -19,7 +21,7 @@ import static edu.csce4623.jlcarlto.flashcardsapp.Model.Deck.DECK_ID;
                                                       childColumns = CARD_DECK_ID,
                                                       onDelete = CASCADE,
                                                       onUpdate = CASCADE))
-public class Card {
+public class Card implements Serializable {
 
     //constant column name values so other classes can use column names without errors
     public static final String CARD_ID = "card_id";
