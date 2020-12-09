@@ -1,5 +1,6 @@
 package edu.csce4623.jlcarlto.flashcardsapp.FlashCardActivity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -19,6 +20,7 @@ import java.util.Random;
 
 import edu.csce4623.jlcarlto.flashcardsapp.AddEditCardActivity.AddEditCardActivity;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
+import edu.csce4623.jlcarlto.flashcardsapp.Model.CardRepository;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Deck;
 import edu.csce4623.jlcarlto.flashcardsapp.Model.DeckWithCards;
 import edu.csce4623.jlcarlto.flashcardsapp.R;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     CardViewModel mViewModel;
     private LiveData<List<Card>> cardList;
     private List<Card> cards;
+    private CardRepository mCardRepository;
     private Deck deck;
     private RecyclerView rv;
     private Button btnNewCard;
@@ -91,21 +94,27 @@ public class MainActivity extends AppCompatActivity {
                 Card c = (Card) data.getSerializableExtra("Card");
                 c.setDeckId(deckId);
                 mViewModel.insertCard(c);
-                adapter.update(cards);
+                cardList = mViewModel.mCardRepository.getAllCards();
+                cards.add(c);
+                adapter.replaceData(cards);
                 adapter.notifyItemInserted((int) c.getCardId());
                 adapter.notifyDataSetChanged();
             }
+        } else if (resultCode == 2) {
+                int deckId = data.getIntExtra("deckId", 0);
+                mCardRepository.deleteById(deckId);
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+        cardList = mViewModel.mCardRepository.getAllCards();
+        adapter.replaceData(cards);
     }
 
     private void initializeAdapter(){
-        adapter = new RVAdapter(cards);
+        adapter = new RVAdapter(cards, mViewModel);
         rv.setAdapter(adapter);
     }
 }

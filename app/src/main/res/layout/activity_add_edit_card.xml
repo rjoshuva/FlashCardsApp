@@ -60,31 +60,30 @@
         app:layout_constraintTop_toTopOf="@+id/etBack" />
 
     <EditText
-        android:id="@+id/etFront"
+        android:id="@+id/etBack"
         android:layout_width="352dp"
         android:layout_height="144dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Back text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBack"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/etFront"
+        app:layout_constraintVertical_bias="0.251" />
 
     <EditText
-        android:id="@+id/etBack"
+        android:id="@+id/etFront"
         android:layout_width="349dp"
         android:layout_height="109dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="8dp"
         android:autofillHints=""
         android:inputType="text"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintHorizontal_bias="0.629"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

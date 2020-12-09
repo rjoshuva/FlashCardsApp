@@ -20,7 +20,7 @@ import edu.csce4623.jlcarlto.flashcardsapp.Model.Deck;
 public class CardViewModel extends AndroidViewModel {
 
     // ViewModel object will have an instance of the repository and a list of all cards in the database
-    private CardRepository mCardRepository;
+    public static CardRepository mCardRepository;
     private final LiveData<List<Card>> mCards;
     private final LiveData<List<Deck>> mDecks;
     private LiveData<List<Card>> cardsInDeck;

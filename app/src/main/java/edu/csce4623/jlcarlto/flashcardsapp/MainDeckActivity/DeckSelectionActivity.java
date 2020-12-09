@@ -76,6 +76,7 @@ public class DeckSelectionActivity extends AppCompatActivity {
             if(data != null) {
                 Deck deck = (Deck) data.getSerializableExtra("Deck");
                 deckViewModel.insertDeck(deck);
+                decks.add(deck);
                 deckAdapter.notifyDataSetChanged();
             }
         }

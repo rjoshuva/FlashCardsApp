@@ -37,12 +37,12 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckAdapter.DeckViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final DeckViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final DeckViewHolder holder, final int position) {
         deck = decks.get(position);
         holder.tvDeck.findViewById(R.id.tvDeck).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                deck = decks.get(position);
                 Intent intent = new Intent(holder.tvDeck.getContext(), MainActivity.class);
                 Log.d("Deckid", String.valueOf(deck.getDeckId()));
                 intent.putExtra("deckId", deck.getDeckId());

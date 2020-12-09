@@ -77,6 +77,14 @@ public class CardRepository {
             }
         });
     }
+    public void deleteById(final int deckId) {
+        CardDatabase.databaseWriteExecutor.execute( new Runnable() {
+            @Override
+            public void run() {
+                mCardDao.deleteCard(deckId);
+            }
+        });
+    }
 
     /**
      * Update an existing card in the database
