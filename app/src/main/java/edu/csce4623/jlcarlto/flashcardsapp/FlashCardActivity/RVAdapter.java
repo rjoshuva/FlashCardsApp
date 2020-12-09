@@ -1,4 +1,4 @@
-package edu.csce4623.jlcarlto.flashcardsapp;
+package edu.csce4623.jlcarlto.flashcardsapp.FlashCardActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,17 +7,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
+import edu.csce4623.jlcarlto.flashcardsapp.R;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
     List<Card> cards;
@@ -65,6 +61,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
     public int getItemCount() {
             Log.d("getItemCount() size=", String.valueOf(cards.size()));
             return cards.size();
+    }
+
+    public void update(List<Card> c) {
+        this.cards = c;
     }
 
     @Override

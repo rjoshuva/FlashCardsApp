@@ -6,6 +6,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.ForeignKey;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import edu.csce4623.jlcarlto.flashcardsapp.Model.Card;
 import static edu.csce4623.jlcarlto.flashcardsapp.Model.Deck.DECK_ID;
 
 @Entity(tableName = "Deck", indices = {@Index(value={DECK_ID}, unique=true)})
-public class Deck {
+public class Deck implements Serializable {
 
     //constant column name values so other classes can use column names without errors
     public static final String DECK_ID = "deck_id";
@@ -38,7 +39,7 @@ public class Deck {
      * @param deckTitle
      * @param deckDescription
      */
-    public Deck(int deckId, String deckTitle, String deckDescription) {
+    public Deck(long deckId, String deckTitle, String deckDescription) {
         this.deckId = deckId;
         this.deckTitle = deckTitle;
         this.deckDescription = deckDescription;

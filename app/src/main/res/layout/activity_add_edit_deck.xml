@@ -7,12 +7,12 @@
 
 
     <Button
-        android:id="@+id/btnSaveCard"
+        android:id="@+id/btnSaveDeck"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Save Card"
+        android:text="Save Deck"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -22,14 +22,14 @@
 
 
     <Button
-        android:id="@+id/btnDeleteCard"
+        android:id="@+id/btnDeleteDeck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:width="120dp"
         android:height="20dp"
-        android:text="Delete Item"
+        android:text="Delete Deck"
         app:layout_constraintBottom_toTopOf="@+id/etBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -38,55 +38,39 @@
         app:layout_constraintVertical_bias="0.181" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Back"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/etFront"
-        app:layout_constraintTop_toTopOf="@+id/etFront" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Front"
+        android:text="Deck Name"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/etBack"
         app:layout_constraintTop_toTopOf="@+id/etBack" />
 
     <EditText
-        android:id="@+id/etFront"
-        android:layout_width="352dp"
-        android:layout_height="144dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/etDeckName"
+        android:layout_width="354dp"
+        android:layout_height="122dp"
         android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnSaveDeck"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBack"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/etBack"
-        android:layout_width="349dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:autofillHints=""
-        android:inputType="text"
-        android:text="TextView"
+        android:id="@+id/etDeckDesc"
+        android:layout_width="354dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="32dp"
+        android:text="Description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etDeckName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

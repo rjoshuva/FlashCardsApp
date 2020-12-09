@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeckSelectionActivity"></activity>
-        <activity android:name=".AddEditCardActivity.AddEditCardActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainDeckActivity.DeckSelectionActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".AddEditCardActivity.AddEditCardActivity" />
+        <activity android:name=".AddEditDeckActivity.AddEditDeckActivity" />
+        <activity android:name=".FlashCardActivity.MainActivity">
         </activity>
     </application>
 
