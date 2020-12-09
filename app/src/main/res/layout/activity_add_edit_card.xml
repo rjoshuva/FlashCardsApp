@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Back"
+        android:text="Front"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/etFront"
         app:layout_constraintTop_toTopOf="@+id/etFront" />
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Front"
+        android:text="Back"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/etBack"
         app:layout_constraintTop_toTopOf="@+id/etBack" />
