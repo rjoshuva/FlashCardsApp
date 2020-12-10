@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     CardViewModel mViewModel;
     private LiveData<List<Card>> cardList;
     private List<Card> cards;
-    private CardRepository mCardRepository;
-    private Deck deck;
     private RecyclerView rv;
     private Button btnNewCard;
     public RVAdapter adapter;
@@ -100,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyItemInserted((int) c.getCardId());
                 adapter.notifyDataSetChanged();
             }
-        } else if (resultCode == 2) {
-                int deckId = data.getIntExtra("deckId", 0);
-                mCardRepository.deleteById(deckId);
         }
     }
 

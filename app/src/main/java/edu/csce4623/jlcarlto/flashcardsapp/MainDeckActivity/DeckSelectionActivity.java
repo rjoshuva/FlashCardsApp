@@ -45,7 +45,6 @@ public class DeckSelectionActivity extends AppCompatActivity {
             public void onChanged(List<Deck> d) {
                 decks.clear();
                 decks.addAll(d);
-                Log.d("onChanged decks=", decks.toString());
             }
         });
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -59,7 +58,7 @@ public class DeckSelectionActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
-        deckAdapter = new DeckAdapter(decks);
+        deckAdapter = new DeckAdapter(decks, deckViewModel);
         rvDeck.setAdapter(deckAdapter);
     }
 
